@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Firewall", "Firewall\Firewall.vcxproj", "{28ED75AB-9C38-4129-BA93-80F8348D2F5E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DemoFirewall", "DemoFirewall\DemoFirewall.vcxproj", "{AF1DCA33-D091-4F76-BC8F-9927D7F91D23}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DemoFirewall(C++)", "DemoFirewall\DemoFirewall.vcxproj", "{AF1DCA33-D091-4F76-BC8F-9927D7F91D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFirewallCS", "DemoFirewallCS\DemoFirewallCS.csproj", "{7E1B65E0-9A3E-4794-9A3B-618E4E014E05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFirewall(CSharp)", "DemoFirewallCS\DemoFirewall(CSharp).csproj", "{7E1B65E0-9A3E-4794-9A3B-618E4E014E05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

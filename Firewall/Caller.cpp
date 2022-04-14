@@ -26,35 +26,42 @@
 //		return true;
 //}
 
-DLL_FIREWALL bool AddApp(char* strAppPath, char* strAppName)
+DLL_FIREWALL bool AddApp_withName(char* strAppPath, char* strAppName)
 {
-	System::String^ apppath = gcnew System::String(strAppPath);
-	System::String^ appname = gcnew System::String(strAppName);
+	String^ apppath = System::Runtime::InteropServices::Marshal::PtrToStringAnsi((IntPtr)strAppPath);
+	String^ appname = System::Runtime::InteropServices::Marshal::PtrToStringAnsi((IntPtr)strAppName);
 
 	CFirewall cfer;
 	
 	bool isok = cfer.AddApplication(apppath, appname);
-	if (isok) {
-		printf("应用已成功添加");
-	}
-	else {
-		printf("应用添加失败");
-	}
-	getchar();
 	
-	return true;
+	return isok;
 }
+
+DLL_FIREWALL bool AddApp(char* strAppPath)
+{
+	//char* strAppName 
+	CFirewall cfer;
+
+	char* strAppName = cfer.get_filename(strAppPath);
+
+	String^ apppath = System::Runtime::InteropServices::Marshal::PtrToStringAnsi((IntPtr)strAppPath);
+	String^ appname = System::Runtime::InteropServices::Marshal::PtrToStringAnsi((IntPtr)strAppName);
+	
+	
+
+	bool isok = AddApp_withName(strAppPath,strAppName);
+
+	return isok;
+
+}
+
 
 DLL_FIREWALL bool FwStatus(void)
 {
 	CFirewall cfer;
 	bool isok = cfer.FirewallStatus(); //检查防火墙状态
-	if (isok) {
-		printf("防火墙已打开");
-	}
-	else {
-		printf("防火墙已关闭");
-	}
-	getchar();
+	
+	
 	return isok;
 }

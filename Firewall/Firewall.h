@@ -31,11 +31,13 @@ private:
 	HRESULT WindowsFirewallAddApp(IN INetFwProfile* fwProfile, IN const wchar_t* fwProcessImageFileName, IN const wchar_t* fwName);
 	HRESULT WindowsFirewallPortIsEnabled(IN INetFwProfile* fwProfile, IN LONG portNumber, IN NET_FW_IP_PROTOCOL ipProtocol, OUT BOOL* fwPortEnabled);
 	HRESULT WindowsFirewallPortAdd(IN INetFwProfile* fwProfile, IN LONG portNumber, IN NET_FW_IP_PROTOCOL ipProtocol, IN const wchar_t* name);
-
+	
 public:
 	CFirewall(void);
 	~CFirewall(void);
 	bool FirewallStatus(void);
 	bool AddApplication(const wchar_t* strAppPath, const wchar_t* strAppName);
 	bool AddApplication(System::String^ strAppPath, System::String^ strAppName);
+	char *get_filename(char *fullpath);
+	
 };

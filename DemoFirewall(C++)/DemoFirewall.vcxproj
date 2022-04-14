@@ -23,6 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DemoFirewall</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>DemoFirewall(C++)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -73,8 +74,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <ReferencePath>D:\Workshop\Firewall\DemoFirewall\Debug;$(ReferencePath)</ReferencePath>
-    <LibraryPath>D:\Workshop\Firewall\DemoFirewall\Debug;$(LibraryPath)</LibraryPath>
+    <ReferencePath>D:\Workshop\Firewall\DemoFirewall%28C++%29\Debug;$(ReferencePath)</ReferencePath>
+    <LibraryPath>D:\Workshop\Firewall\DemoFirewall%28C++%29\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Workshop\Firewall\Firewall;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -161,11 +163,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Firewall\Firewall.vcxproj">
-      <Project>{28ed75ab-9c38-4129-ba93-80f8348d2f5e}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,28 @@
 #include "StdAfx.h"
 #include "Firewall.h"
 
+char * CFirewall::get_filename(char *fullpath)
+{
+	char *ptr = NULL;
+	int len = strlen(fullpath);
+
+	if (fullpath == NULL)
+		return NULL;
+
+	ptr = fullpath + len;
+
+	while (ptr != fullpath && *ptr != '\\')
+		ptr--;
+
+	
+	ptr++;
+
+	if (*ptr == '/')
+		ptr++;
+
+	return ptr;
+}
+
 void CFirewall::WriteErrorMessage(System::String^ strErrorMessage)
 {
 	DirectoryInfo^ clsPath = gcnew DirectoryInfo(Path::GetDirectoryName(Application::ExecutablePath));
@@ -26,11 +48,11 @@ bool CFirewall::ServiceStatus(void)
 	{
 		for each (ServiceController^ clsService in clsServices)
 		{
-			if (clsService->ServiceName == "SharedAccess")
+			if (System::String::Compare(clsService->ServiceName,"SharedAccess",true) == 0)
 			{
 				if (clsService->Status == ServiceControllerStatus::Running) blnStatus = true;
 			}
-			else if (clsService->ServiceName == "MpsSvc")
+			else if (System::String::Compare(clsService->ServiceName, "MpsSvc", true) == 0)
 			{
 				if (clsService->Status == ServiceControllerStatus::Running) blnStatus = true;
 			}
@@ -382,8 +404,8 @@ HRESULT CFirewall::WindowsFirewallAddApp(
 			hr = E_OUTOFMEMORY;
 			goto error;
 		}
-
-		// Set the process image file name.
+		//?
+		// Set the process image file name. 
 		hr = fwApp->put_ProcessImageFileName(fwBstrProcessImageFileName);
 		if (FAILED(hr))
 		{
@@ -404,7 +426,7 @@ HRESULT CFirewall::WindowsFirewallAddApp(
 		{
 			goto error;
 		}
-
+		//?
 		// Add the application to the collection.
 		hr = fwApps->Add(fwApp);
 		if (FAILED(hr))
